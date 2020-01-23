@@ -6,6 +6,8 @@ const Avatar = require('./Commandes/avatar');
 const Ping = require('./Commandes/ping');
 const Bench = require('./Commandes/bench');
 const Mail = require('./Commandes/mail');
+const HSL = require('./Commandes/hsl');
+const Woomy = require('./Commandes/woomy');
 
 client.on('message', function (message) {
     if (Ping.match(message)) {
@@ -23,8 +25,14 @@ client.on('message', function (message) {
     if (Mail.match(message)) {
         return Mail.action(message);
     }
-    if (message == 'Salut' || message == 'salut' || message == 'Hi' || message == 'hi' || message == 'Bonjour' || message == 'bonjour' || message == 'Hello' || message == 'hello' || message == 'Hey' || message == 'hey' || message == 'Coucou' || message == 'coucou') {
+    if (message.content.startsWith('Salut') || message.content.startsWith('salut') || message.content.startsWith('Hi') || message.content.startsWith('hi') || message.content.startsWith('Bonjour') || message.content.startsWith('bonjour') || message.content.startsWith('Hello') || message.content.startsWith('hello') || message.content.startsWith('Hey') || message.content.startsWith('hey') || message.content.startsWith('Coucou') || message.content.startsWith('coucou')) {
         return message.react('👋');
+    }
+    if (HSL.match(message)) {
+        return HSL.action(message);
+    }
+    if (Woomy.match(message)) {
+        return Woomy.action(message);
     }
 })
 
@@ -34,4 +42,4 @@ client.on('guildMemberAdd', function (member) {
     }).catch(console.error);
 })
 
-client.login('token');
+client.login('NjYyMjM3NjAzMjkwMTUyOTYy.XiMh_Q.LBjsaH1xOEO56sZ1B0GOXE4E08g');
