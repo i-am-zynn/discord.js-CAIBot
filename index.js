@@ -34,4 +34,4 @@ client.on('guildMemberAdd', function (member) {
     }).catch(console.error);
 })
 
-client.login('NjYyMjM3NjAzMjkwMTUyOTYy.Xg5bhg.vBivuMEdInxal_eHeIPF7Ajw-pI');
+client.login('token');
