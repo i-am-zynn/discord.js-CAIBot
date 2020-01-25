@@ -1,2 +1,0 @@
-# CAI-Bot
-Bot Discord
