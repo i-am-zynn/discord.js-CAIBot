@@ -1,45 +1,49 @@
 const Discord = require('discord.js');
-const Attachment = require('discord.js')
 const client = new Discord.Client();
-const Google = require('./Commandes/google');
-const Avatar = require('./Commandes/avatar');
-const Ping = require('./Commandes/ping');
-const Bench = require('./Commandes/bench');
-const Mail = require('./Commandes/mail');
-const HSL = require('./Commandes/hsl');
-const Woomy = require('./Commandes/woomy');
+client.commands = new Discord.Collection();
+const fs = require('fs');
 
 client.on('message', function (message) {
-    if (Ping.match(message)) {
-        return Ping.action(message);
-    }
-    if (Google.match(message)) {
-        return Google.action(message);
-    }
-    if (Avatar.match(message)) {
-        return Avatar.action(message);
-    }
-    if (Bench.match(message)) {
-        return Bench.action(message);
-    }
-    if (Mail.match(message)) {
-        return Mail.action(message);
-    }
-    if (message.content.startsWith('Salut') || message.content.startsWith('salut') || message.content.startsWith('Hi') || message.content.startsWith('hi') || message.content.startsWith('Bonjour') || message.content.startsWith('bonjour') || message.content.startsWith('Hello') || message.content.startsWith('hello') || message.content.startsWith('Hey') || message.content.startsWith('hey') || message.content.startsWith('Coucou') || message.content.startsWith('coucou')) {
-        return message.react('👋');
-    }
-    if (HSL.match(message)) {
-        return HSL.action(message);
-    }
-    if (Woomy.match(message)) {
-        return Woomy.action(message);
+    if (message.content.startsWith('Recherche')) {
+        let args = message.content.split(' ');
+        args.shift();
+
+        message.channel.send('Voici le lien de redirection vers les résultats concernant votre recherche : https://www.google.fr/#q=' + args.join('+') + '\n \nVotre recherche :' + ' ' + args.join(' '))
+            .then(console.log(message.author.username + '  ' + 'a utilisé la commande Google pour rechercher :' + ' ' + '"' + args.join(' ') + '"'))
+            .catch((error) => {
+                console.error(error);
+
+                return message.channel.send('Une erreur s\'est produite lors de l\'exécution de la commande. Veuillez réessayer ultérieurement. Si le problème persiste, veuillez contacter Nεξυς#9063.')
+            })
+            
     }
 })
 
-client.on('guildMemberAdd', function (member) {
-    member.createDM().then(function (channel) {
-        return channel.send('Salut' + ' ' + member.displayName + ' ' + '!' + ' ' + 'Bienvenue sur le serveur' + ' ' + member.guild.name + ' ' + '!');
-    }).catch(console.error);
-})
+fs.readdir('./Commandes/', (error, f) => {
+    if (error) { return console.error(error); }
+        let commandes = f.filter(f => f.split('.').pop() === 'js');
+    if (commandes.length <= 0) {
+        return console.warn('Aucune commande trouvée !');
+    }
 
-client.login('token');
+        commandes.forEach((f) => {
+            let commande = require(`./Commandes/${f}`);
+            console.log(`${f} commande chargée !`);
+            client.commands.set(commande.help.name, commande);
+        });
+});
+
+fs.readdir('./Events/', (error, f) => {
+    if (error) {
+        return console.error(error);
+    }
+        console.log(`${f.length} events chargés`);
+
+        f.forEach((f) => {
+            let events = require(`./Events/${f}`);
+            let event = f.split('.')[0];
+            client.on(event, events.bind(null, client));
+        });
+});
+
+client.login('NjYyMjM3NjAzMjkwMTUyOTYy.XjBwTA.T1ptp4iBl51f8Zp9g8pnMLm2HvE');
