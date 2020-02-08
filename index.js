@@ -1,7 +1,8 @@
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const client = new Discord.Client({ disableEveryone: true });
 client.commands = new Discord.Collection();
 const fs = require('fs');
+const config = require('./config');
 
 client.on('message', function (message) {
     if (message.content.startsWith('Recherche')) {
@@ -20,7 +21,9 @@ client.on('message', function (message) {
 })
 
 fs.readdir('./Commandes/', (error, f) => {
-    if (error) { return console.error(error); }
+    if (error) {
+        return console.error(error);
+    }
         let commandes = f.filter(f => f.split('.').pop() === 'js');
     if (commandes.length <= 0) {
         return console.warn('Aucune commande trouvée !');
@@ -46,4 +49,4 @@ fs.readdir('./Events/', (error, f) => {
         });
 });
 
-client.login('NjYyMjM3NjAzMjkwMTUyOTYy.XjBwTA.T1ptp4iBl51f8Zp9g8pnMLm2HvE');
+client.login(config.token);
