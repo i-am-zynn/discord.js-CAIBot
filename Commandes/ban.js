@@ -44,7 +44,7 @@ module.exports.run = (client, message, args) => {
 
     const dembed = new Discord.RichEmbed()
         .setColor('0xff0000')
-        .setTitle('Vous avez été sanctionné')
+        .setTitle('Vous avez été sanctionné(e)')
         .addField('Type de sanction :', 'Bannissement')
         .addField('Bannissement temporaire :', 'Non')
         .addField('Serveur :', message.guild.name)
