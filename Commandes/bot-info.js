@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const moment = require('moment');
+const config = require('../config');
 
 module.exports.run = (client, message, args) => {
 
@@ -11,7 +12,7 @@ module.exports.run = (client, message, args) => {
         .addField('Mon tag :', '#' + client.user.discriminator)
         .addField('Mon ID :', client.user.id)
         .addField('Date et heure de ma création :', client.user.createdAt)
-        .addField('Version :', '1.0.0')
+        .addField('Version :', config.version)
         .addField('Présent sur :', client.guilds.size + ' ' + 'serveur(s)');
 
     message.channel.send(embed)
