@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const client = new Discord.Client({ disableEveryone: true });
+const client = new Discord.Client();
 client.commands = new Discord.Collection();
 const fs = require('fs');
 const config = require('./config');
@@ -9,8 +9,8 @@ client.on('message', function (message) {
         let args = message.content.split(' ');
         args.shift();
 
-        message.channel.send('Voici le lien de redirection vers les résultats concernant votre recherche : https://www.google.fr/#q=' + args.join('+') + '\n \nVotre recherche :' + ' ' + args.join(' '))
-            .then(console.log(message.author.username + '  ' + 'a utilisé la commande Google pour rechercher :' + ' ' + '"' + args.join(' ') + '"'))
+        message.channel.send(`Voici le lien de redirection vers les résultats concernant votre recherche : https://www.google.fr/#q=${args.join('+')} \n \nVotre recherche : "${args.join(' ')}"`)
+            .then(console.log(`${message.author.username} a utilisé la commande Google pour rechercher : "${args.join(' ')}"`))
             .catch((error) => {
                 console.error(error);
 
@@ -21,9 +21,7 @@ client.on('message', function (message) {
 })
 
 fs.readdir('./Commandes/', (error, f) => {
-    if (error) {
-        return console.error(error);
-    }
+    if (error) { return console.error(error); }
         let commandes = f.filter(f => f.split('.').pop() === 'js');
     if (commandes.length <= 0) {
         return console.warn('Aucune commande trouvée !');
