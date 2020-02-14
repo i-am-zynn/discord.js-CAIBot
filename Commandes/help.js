@@ -8,10 +8,13 @@ module.exports.run = (client, message, args) => {
         .addField('avatar', 'Afficher votre avatar ou celui d\'un utilisateur')
         .addField('bench', 'Envoi le lien de UserBenchmark pour tester ses compsants')
         .addField('bot-info', 'Voir les informations sur le bot')
+        .addField('google', 'Faire une recherche sur Google')
         .addField('help', 'Voici les commandes disponibles')
         .addField('ping', 'Voir le ping du bot')
+        .addField('say', 'Envoyer un message via le bot')
         .addField('server-info', 'Avoir des informations sur le serveur')
-        .addField('stats', 'Voir vos statistiques ou ceux d\'un utilisateur');
+        .addField('stats', 'Voir vos statistiques ou ceux d\'un utilisateur')
+        .addField('version', 'Voir la version du bot');
 
     const aembed = new Discord.RichEmbed()
         .setColor('red')

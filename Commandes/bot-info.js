@@ -13,7 +13,7 @@ module.exports.run = (client, message, args) => {
         .addField('Mon ID :', client.user.id)
         .addField('Date et heure de ma création :', client.user.createdAt)
         .addField('Version :', config.version)
-        .addField('Présent sur :', client.guilds.size + ' ' + 'serveur(s)');
+        .addField('Présent sur :', client.guilds.size + ' serveur(s)');
 
     message.channel.send(embed)
         .catch((error) => {
