@@ -20,6 +20,7 @@ module.exports.run = (client, message, args) => {
         .setColor('red')
         .setTitle('Vos commandes de modération disponibles')
         .addField('clear', 'Supprimer un certain nombre de messages')
+        .addField('poll', 'Faire un sondage')
         .addField('tempmute', 'Réduire temporairement un membre au silence');
 
     const bembed = new Discord.RichEmbed()
@@ -27,6 +28,7 @@ module.exports.run = (client, message, args) => {
         .setTitle('Vos commandes de modération disponibles')
         .addField('clear', 'Supprimer un certain nombre de messages')
         .addField('kick', 'Expulser un membre')
+        .addField('poll', 'Faire un sondage')
         .addField('tempmute', 'Réduire temporairement un membre au silence');
 
     const cembed = new Discord.RichEmbed()
@@ -34,6 +36,7 @@ module.exports.run = (client, message, args) => {
         .setTitle('Vos commandes de modération disponibles')
         .addField('ban', 'Bannir un membre')
         .addField('clear', 'Supprimer un certain nombre de messages')
+        .addField('poll', 'Faire un sondage')
         .addField('tempmute', 'Réduire temporairement un membre au silence');
 
     const dembed = new Discord.RichEmbed()
@@ -52,6 +55,7 @@ module.exports.run = (client, message, args) => {
         .addField('ban', 'Bannir un membre')
         .addField('clear', 'Supprimer un certain nombre de messages')
         .addField('kick', 'Expulser un membre')
+        .addField('poll', 'Faire un sondage')
         .addField('tempmute', 'Réduire temporairement un membre au silence');
 
 

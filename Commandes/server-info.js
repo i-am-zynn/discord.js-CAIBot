@@ -1,4 +1,6 @@
 const Discord = require('discord.js');
+const moment = require('moment-timezone');
+moment.locale('fr');
 
 module.exports.run = (client, message, args) => {
 
@@ -7,7 +9,8 @@ module.exports.run = (client, message, args) => {
         .setTitle(`Information sur le serveur _${message.guild.name}_`)
         .setThumbnail(message.guild.iconURL)
         .addField('Nom du serveur :', message.guild.name)
-        .addField('Date de création du serveur :', message.guild.createdAt)
+        .addField('ID du serveur :', message.guild.id)
+        .addField('Date de création du serveur :', moment(message.guild.createdAt).tz("Europe/Paris").format('[Le] L [à] LTS'))
         .addField('Nombre de membres :', message.guild.members.size + ' ' + 'membres')
 
 

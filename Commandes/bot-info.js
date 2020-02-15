@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
-const moment = require('moment');
+const moment = require('moment-timezone');
+moment.locale('fr');
 const config = require('../config');
 
 module.exports.run = (client, message, args) => {
@@ -11,7 +12,7 @@ module.exports.run = (client, message, args) => {
         .addField('Mon nom :', client.user.username)
         .addField('Mon tag :', '#' + client.user.discriminator)
         .addField('Mon ID :', client.user.id)
-        .addField('Date et heure de ma création :', client.user.createdAt)
+        .addField('Date et heure de ma création :', moment(client.user.createdAt).tz("Europe/Paris").format('[Le] L [à] LTS'))
         .addField('Version :', config.version)
         .addField('Présent sur :', client.guilds.size + ' serveur(s)');
 
