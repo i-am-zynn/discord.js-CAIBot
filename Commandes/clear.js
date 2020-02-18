@@ -17,7 +17,10 @@ module.exports.run = (client, message, args) => {
     message.delete();                                                                          
         message.channel.bulkDelete(args[0])
             .then((messages) => {
-                message.channel.send(`**${messages.size}** messages ont été supprimés !`);
+                message.channel.send(`**${messages.size}** messages ont été supprimés !`)
+                    .then((m) => {
+                        m.delete(5000);
+                    })
             })
             .catch((error) => {
                     console.error(error);
