@@ -11,6 +11,7 @@ module.exports.run = (client, message, args) => {
         .addField('google', 'Faire une recherche sur Google')
         .addField('help', 'Voici les commandes disponibles')
         .addField('ping', 'Voir le ping du bot')
+        .addField('report', 'Signaler un membre au staff du serveur')
         .addField('say', 'Envoyer un message via le bot')
         .addField('server-info', 'Avoir des informations sur le serveur')
         .addField('stats', 'Voir vos statistiques ou ceux d\'un utilisateur')
