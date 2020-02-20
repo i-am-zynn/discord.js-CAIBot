@@ -5,7 +5,17 @@ If (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
 write-output "-----------------------------------"
 write-output "CAI-Bot Setup: Par Woomy4680-exe"
 write-output "-----------------------------------"
-write-output "Ce script va installer NODE JS et toutes les dépendences pour l'exécution de CAI-BOt"
+Set-Location $PSScriptRoot
+.\installer\install.exe 
 write-output "Installation..."
-write-outpout "De chocolatey"
+write-output "De chocolatey"
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 write-output "De NodeJS"
+RefreshEnv.cmd
+choco upgrade nodejs -y 
+.\installer\deps.exe 
+choco upgrade -y choco-cleaner python2 visualstudio2017-workload-vctools
+Set-Location $PSScriptRoot 
+npm install 
+Write-Output "OK"
+pause 

@@ -1,10 +1,4 @@
 {
     "token": "BOT_TOKEN",
-<<<<<<< HEAD
-    "version": "2.5.4",
-    "installer": "1.0",
-    "installernode": "13"
-=======
     "version": "2.5.8"
->>>>>>> ad578498817d0548f44e1ece2cfc49b553ef5884
 }
