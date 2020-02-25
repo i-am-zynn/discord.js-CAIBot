@@ -10,8 +10,6 @@
   "license": "MIT",
   "dependencies": {
     "@vitalets/google-translate-api": "^3.0.0",
-    "ascii-art": "^2.5.0",
-    "deepl": "^1.0.3",
     "discord.js": "^11.5.1",
     "fs": "^0.0.1-security",
     "mathjs": "^6.6.0",
