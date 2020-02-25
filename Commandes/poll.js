@@ -23,7 +23,6 @@ module.exports.run = (client, message, args) => {
                 .setTitle('Erreur')
                 .setDescription('Une erreur s\'est produite lors de l\'exécution de la commande. Veuillez réessayer ultérieurement. Si le problème persiste, veuillez contacter Nεξυς#9063.')
                 .addField('Erreur', error);
-
             if (error) {
                 console.error(error);
 

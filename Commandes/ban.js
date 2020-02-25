@@ -35,6 +35,7 @@ module.exports.run = (client, message, args) => {
     }
 
     let banMember = message.guild.member(message.mentions.users.first());
+    let logChannel = banMember.guild.channels.find(`name`, 'logs');
 
     if (!banMember) {
         return message.channel.send(cembed);
@@ -48,7 +49,7 @@ module.exports.run = (client, message, args) => {
         .addField('Type de sanction :', 'Bannissement')
         .addField('Bannissement temporaire :', 'Non')
         .addField('Serveur :', message.guild.name)
-        .addField('Banni par :', message.author.username)
+        .addField('Banni par :', `${message.author.username}#${message.author.discriminator}`)
         .addField('Raison :', reason ? reason: '_Aucune raison spécifiée_');
 
     const eembed = new Discord.RichEmbed()
@@ -57,7 +58,10 @@ module.exports.run = (client, message, args) => {
         .addField('Type de sanction :', 'Bannissement')
         .addField('Bannissement temporaire :', 'Non')
         .addField('Utilisateur banni :', banMember.user.username)
+        .addField('Tag de l\'utilisateur banni :', `#${banMember.user.discriminator}`)
+        .addField('ID de l\'utilisateur banni :', banMember.id)
         .addField('Banni par :', message.author.username)
+        .addField('Tag du modérateur :', `#${message.author.discriminator}`)
         .addField('Raison :', reason ? reason: '_Aucune raison spécifiée_');
 
     message.mentions.users.first().send(dembed)
@@ -65,6 +69,21 @@ module.exports.run = (client, message, args) => {
                 banMember.ban(reason)
                     .then((member) => {
                         message.channel.send(eembed)
+
+                        const logembed = new Discord.RichEmbed()
+                            .setColor('0xff0000')
+                            .setTitle('Un utilisateur a été sanctionné')
+                            .addField('Type de sanction :', 'Bannissement')
+                            .addField('Bannissement temporaire :', 'Non')
+                            .addField('Utilisateur banni :', banMember.user.username)
+                            .addField('Tag de l\'utilisateur banni :', `#${banMember.user.discriminator}`)
+                            .addField('ID de l\'utilisateur banni :', banMember.id)
+                            .addField('Banni par :', message.author.username)
+                            .addField('Tag du modérateur :', `#${message.author.discriminator}`)
+                            .addField('Raison :', reason ? reason: '_Aucune raison spécifiée_')
+                            .setTimestamp(new Date());
+
+                        logChannel.send(logembed);
                     })
                         .catch((err) => {
 
@@ -85,6 +104,22 @@ module.exports.run = (client, message, args) => {
                     banMember.ban(reason)
                             .then((member) => {
                                 message.channel.send(eembed);
+
+                                const logembed2 = new Discord.RichEmbed()
+                                    .setColor('0xff0000')
+                                    .setTitle('Un utilisateur a été sanctionné')
+                                    .addField('Type de sanction :', 'Bannissement')
+                                    .addField('Bannissement temporaire :', 'Non')
+                                    .addField('Utilisateur banni :', banMember.user.username)
+                                    .addField('Tag de l\'utilisateur banni :', `#${banMember.user.discriminator}`)
+                                    .addField('ID de l\'utilisateur banni :', banMember.id)
+                                    .addField('Banni par :', message.author.username)
+                                    .addField('Tag du modérateur :', message.author.discriminator)
+                                    .addField('Raison :', reason ? reason: '_Aucune raison spécifiée_')
+                                    .setTimestamp(new Date());
+
+                                logChannel.send(logembed2);
+                                    
                             })
                                 .catch((err) => {
 

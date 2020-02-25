@@ -46,7 +46,7 @@ module.exports.run = (client, message, args) => {
         .setTitle('Vous avez été sanctionné(e)')
         .addField('Type de sanction :', 'Expulsion')
         .addField('Serveur :', message.guild.name)
-        .addField('Expulsé par :', message.author.username)
+        .addField('Expulsé par :', `${message.author.username}#${message.author.discriminator}`)
         .addField('Raison :', reason ? reason: '_Aucune raison spécifiée_');
 
     const eembed = new Discord.RichEmbed()
@@ -54,7 +54,10 @@ module.exports.run = (client, message, args) => {
         .setTitle('Un utilisateur a été sanctionné')
         .addField('Type de sanction :', 'Expulsion')
         .addField('Utilisateur expulsé :', kickMember.user.username)
-        .addField('Expulsé par :', message.author.username)
+        .addField('Tag de l\'utilisateur expulsé :', `#${kickMember.user.discriminator}`)
+        .addField('ID de l\'utilisateur expulsé :', kickMember.id)
+        .addField('Banni par :', message.author.username)
+        .addField('Tag du modérateur :', message.author.discriminator)
         .addField('Raison :', reason ? reason: '_Aucune raison spécifiée_');
 
     message.mentions.users.first().send(dembed)

@@ -37,6 +37,10 @@ module.exports.run = (client, message, args) => {
         .then((m) => {
             m.delete(5000);
         })
+        .catch((error) => {
+            console.error(error);
+            message.channel.send('Une erreur s\'est produite lors de l\'exécution de la commande. Veuillez réessayer ultérieurement. Si le problème persiste, veuillez contacter Nεξυς#9063.');
+        })
 }
 
 module.exports.help = {

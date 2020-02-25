@@ -13,21 +13,26 @@ module.exports.run = (client, message, args) => {
     else if (isNaN(args[0])) {
         return message.channel.send('Veuillez spécifier un nombre !');
     }
-
-    message.delete();                                                                          
-        message.channel.bulkDelete(args[0])
-            .then((messages) => {
-                message.channel.send(`**${messages.size}** messages ont été supprimés !`)
-                    .then((m) => {
-                        m.delete(5000);
-                    })
-            })
-            .catch((error) => {
-                    console.error(error);
-                    return message.channel.send('Une erreur s\'est produite lors de l\'exécution de la commande. Veuillez réessayer ultérieurement. Si le problème persiste, veuillez contacter Nεξυς#9063.')
+                                                                     
+    message.delete()
+        .then((m) => {  
+            message.channel.bulkDelete(args[0])
+                .then((messages) => {
+                    message.channel.send(`**${messages.size}** messages ont été supprimés !`)
+                        .then((m) => {
+                            m.delete(5000)
+                        })
                 })
-};
+                .catch((error) => {
+                        console.error(error);
+                        return message.channel.send('Une erreur s\'est produite lors de l\'exécution de la commande. Veuillez réessayer ultérieurement. Si le problème persiste, veuillez contacter Nεξυς#9063.')
+                    })
+        })
+        .catch((error) => {
+            console.error(error);
+        })
+}
 
 module.exports.help = {
     name: 'clear'
-};
+}
