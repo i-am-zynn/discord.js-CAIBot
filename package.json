@@ -1,0 +1,22 @@
+{
+  "name": "cai-bot",
+  "version": "2.5.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@vitalets/google-translate-api": "^3.0.0",
+    "discord.js": "^11.5.1",
+    "fs": "^0.0.1-security",
+    "mathjs": "^6.6.0",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.27",
+    "ms": "^2.1.2",
+    "node-fetch": "^2.6.0",
+    "snekfetch": "^4.0.4"
+  }
+}
