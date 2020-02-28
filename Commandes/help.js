@@ -4,7 +4,7 @@ module.exports.run = (client, message, args) => {
     const embed = new Discord.RichEmbed()
         .setColor('RANDOM')
         .setTitle('Voici la liste des commandes disponibles :')
-        .setDescription('Mon préfix est' + '`cai!`')
+        .setDescription('Mon préfix est `cai!`')
         .addField('8ball', 'Poser une question au bot')
         .addField('avatar', 'Afficher votre avatar ou celui d\'un utilisateur')
         .addField('bench', 'Envoi le lien de UserBenchmark pour tester ses compsants')
