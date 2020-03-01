@@ -10,7 +10,7 @@ module.exports = (client, message) => {
         return;
     }
 
-    if (!message.content.startsWith(prefix)) {
+    if (!message.content.startsWith(config.prefix)) {
         return;
     }
     
