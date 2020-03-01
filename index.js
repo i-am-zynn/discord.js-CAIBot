@@ -31,4 +31,4 @@ fs.readdir('./Events/', (error, f) => {
         });
 });
 
-client.login(config.token);
+client.login(process.env.token);
