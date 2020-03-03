@@ -13,7 +13,7 @@ module.exports.run = (cient, message, args) => {
     } catch (e) {
         return message.channel.send('Une erreur s\'est produite lors de l\'exécution de la commande. Veuillez réessayer ultérieurement. Si le problème persiste, veuillez contacter Nεξυς#9063.');
     }
-
+try{
     const embed = new Discord.RichEmbed()
         .setColor('ORANGE')
         .setTitle('Calcul effectué !')
@@ -21,6 +21,10 @@ module.exports.run = (cient, message, args) => {
         .addField('Résultat :', calcul);
 
     message.channel.send(embed);
+}
+catch(e){
+    console.log(e)
+}
 }
 
 module.exports.help = {
