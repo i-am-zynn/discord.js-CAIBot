@@ -1,20 +1,31 @@
 const Discord = require('discord.js');
 
 module.exports.run = (client, message, args) => {
-    message.channel.send(`Voici le lien de redirection vers les résultats concernant votre recherche : https://www.google.fr/#q=${args.join('+')} \n \n__Votre recherche__ : ${args.join(' ')}`)
-        .then(console.log(`${message.author.username} a utilisé la commande Google pour rechercher : "${args.join(' ')}`))
-        .catch((error) => {
-            const errorembed = new Discord.RichEmbed()
-                .setColor('0xff0000')
-                .setTitle('Erreur')
-                .setDescription('Une erreur s\'est produite lors de l\'exécution de la commande. Veuillez réessayer ultérieurement. Si le problème persiste, veuillez contacter Nεξυς#9063.')
-                .addField('Erreur', error);
-            if (error) {
-                console.error(error);
+    const embed = new Discord.RichEmbed()
+        .setColor('0xff0000')
+        .setTitle('Fraude de permission')
+        .setDescription('Vous ne pouvez pas m\'utiliser pour mentionner tout les membres du serveur.')
+        .setFooter(`Tentative de ${message.author.username}`, message.author.displayAvatarURL)
+        .setTimestamp(new Date());
 
-                message.channel.send(errorembed);
-            }
-        })
+    if (!message.guild.member(message.author).hasPermission('MENTION_EVERYONE') && message.content.includes('@everyone')) {
+        return message.channel.send(embed);
+    }
+
+    if (!message.guild.member(message.author).hasPermission('MENTION_EVERYONE') && message.content.includes('@here')) {
+        return message.channel.send(embed);
+    }
+    
+    if (!args.join(' ')) {
+        return message.reply('la recherche ne peut pas être vide');
+    }
+
+    const ambed = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setTitle('Recherche effectuée !')
+        .setDescription(`J'ai effectué ta recherche. Tu peux retrouver les résultats [ici](https://www.google.fr/#q=${args.join('+')}). \n \n__Votre recherche__ : ${args.join(' ')}`)
+    
+        message.channel.send(ambed);
 }
 
 module.exports.help = {

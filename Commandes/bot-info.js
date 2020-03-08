@@ -1,9 +1,12 @@
 const Discord = require('discord.js');
 const moment = require('moment-timezone');
 moment.locale('fr');
+const os = require('os');
 const config = require('../config');
 
-module.exports.run = (client, message, args) => {
+module.exports.run = (client, message, args) =>{
+    let cpuusage = process.cpuUsage();
+    let memory = (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2);
 
     const embed = new Discord.RichEmbed()
         .setColor('0x39afe4')
@@ -14,20 +17,41 @@ module.exports.run = (client, message, args) => {
         .addField('Mon ID :', client.user.id)
         .addField('Date et heure de ma création :', moment(client.user.createdAt).tz("Europe/Paris").format('[Le] L [à] LTS'))
         .addField('Version :', config.version)
-        .addField('Présent sur :', client.guilds.size + ' serveur(s)');
+        .addBlankField()
+        .addField('Système d\'explotation :', os.type(), true)
+        .addField('Version du système d\'exploitation :', os.release() , true)
+        .addField('Architecture :', os.arch(), true)
+        .addField('Mémoire allouée :', Math.round(process.memoryUsage().rss / 1024 / 1024) + " MB", true)
+        // .addField('Mémoire utilisée :', Math.round(process.memoryUsage().heapUsed / 1000 / 1000) + " MB", true)
+        .addField('Mémoire utilisée :', memory + " MB", true)
+        .addField('Model du processeur :', os.cpus()[0].model, true)
+        .addField('Utilisation du processeur :', Math.floor(cpuusage.user / cpuusage.system) + "%", true)
+        .addField('Version Node JS :', process.version, true)
+        .addField('Version Discord.js :', Discord.version, true);
 
-    message.channel.send(embed)
-        .catch((error) => {
-            const errorembed = new Discord.RichEmbed()
-                .setColor('0xff0000')
-                .setTitle('Erreur')
-                .setDescription('Une erreur s\'est produite lors de l\'exécution de la commande. Veuillez réessayer ultérieurement. Si le problème persiste, veuillez contacter Nεξυς#9063.')
-                .addField('Erreur :', error);
+    try {
+        message.channel.send(embed)
+            .catch((error) => {
+                const errorembed = new Discord.RichEmbed()
+                    .setColor('0xff0000')
+                    .setTitle('Erreur')
+                    .setDescription('Une erreur s\'est produite lors de l\'exécution de la commande. Veuillez réessayer ultérieurement. Si le problème persiste, veuillez contacter Nεξυς#9063.')
+                    .addField('Erreur :', error);
 
-            console.error(error);
+                console.error(error);
 
-            message.channel.send(errorembed);
-        })
+                message.channel.send(errorembed);
+            })
+    } catch(e) {
+        const errorembed = new Discord.RichEmbed()
+            .setColor('0xff0000')
+            .setTitle('Erreur')
+            .setDescription('Une erreur s\'est produite lors de l\'exécution de la commande. Veuillez réessayer ultérieurement. Si le problème persiste, veuillez contacter Nεξυς#9063.')
+            .addField('Erreur :', e);
+
+        message.channel.send(errorembed);
+        console.error(e)
+    }
 }
 
 module.exports.help = {

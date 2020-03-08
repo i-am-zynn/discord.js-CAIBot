@@ -3,7 +3,7 @@ const moment = require('moment-timezone');
 moment.locale('fr');
 
 module.exports.run = (client, message, args) => {
-    const membre = message.mentions.members.first() || message.member;
+    const membre = message.guild.member(message.mentions.members.first() || message.member);
 
     const embed = new Discord.RichEmbed()
         .setColor('RANDOM')
@@ -14,7 +14,7 @@ module.exports.run = (client, message, args) => {
         .addField('ID', membre.id)
         .addField('Activité :', membre.user.presence.game ? membre.user.presence.game.name: 'Cet utilisateur ne joue pas')
         .addField('A créé son compte le :', moment(membre.user.createdAt).tz("Europe/Paris").format('[Le] L [à] LTS'))
-        .addField('A rejoint le serveur le :', moment(membre.user.joinedAt).tz("Europe/Paris").format('[Le] L [à] LTS'));
+        .addField('A rejoint le serveur le :', moment(membre.joinedAt).tz("Europe/Paris").format('[Le] L [à] LTS'));
 
         message.channel.send(embed)
             .catch((error) => {

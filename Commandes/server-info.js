@@ -21,7 +21,9 @@ module.exports.run = (client, message, args) => {
                 .setColor('0xff0000')
                 .setTitle('Erreur')
                 .setDescription('Une erreur s\'est produite lors de l\'exécution de la commande. Veuillez réessayer ultérieurement. Si le problème persiste, veuillez contacter Nεξυς#9063.')
-                .addField('Erreur :', error);
+                .addField('Erreur :', error)
+                .setFooter(`Tentative de ${message.author.username}`, message.author.displayAvatarURL)
+                .setTimestamp(new Date());
 
             console.error(error);
 

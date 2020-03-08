@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const config =  require('../config')
+
 module.exports.run = (client, message, args) => {
     const embed = new Discord.RichEmbed()
         .setColor('RANDOM')
@@ -7,20 +7,22 @@ module.exports.run = (client, message, args) => {
         .setDescription('Mon préfix est `cai!`')
         .addField('8ball', 'Poser une question au bot')
         .addField('avatar', 'Afficher votre avatar ou celui d\'un utilisateur')
-        .addField('bench', 'Envoi le lien de UserBenchmark pour tester ses compsants')
+        .addField('bench', 'Envoi le lien de UserBenchmark pour tester ses composants')
         .addField('bot-info', 'Voir les informations sur le bot')
         .addField('calc', 'Faire un calcul')
         .addField('candid', 'Faire une candidature pour faire parti du staff du serveur')
+        .addField('color', 'Afficher une couleur')
         .addField('dog', 'Afficher une image de chien')
-        .addField('giphy', 'Faire une recherche sur GIPHY')
+        .addField('giphy', 'Rechercher et afficher un GIF')
         .addField('google', 'Faire une recherche sur Google')
-        .addField('help', 'Voici les commandes disponibles')
+        .addField('help', 'Voir les commandes disponibles')
+        .addField('nick', 'Changer de pseudo ou celui d\'un utilisateur')
         .addField('ping', 'Voir le ping du bot')
         .addField('report', 'Signaler un membre au staff du serveur')
         .addField('say', 'Envoyer un message via le bot')
         .addField('server-info', 'Avoir des informations sur le serveur')
         .addField('stats', 'Voir vos statistiques ou ceux d\'un utilisateur')
-        .addField('traduc / t', 'Traduire du texte')
+        .addField('t', 'Traduire du texte')
         .addField('version', 'Voir la version du bot');
 
     const aembed = new Discord.RichEmbed()
@@ -96,7 +98,18 @@ module.exports.run = (client, message, args) => {
         return message.channel.send(fembed);
     }
 
+    try {
     message.channel.send(embed);
+    } catch(e) {
+        const errorembed = new Discord.RichEmbed()
+            .setColor('0xff0000')
+            .setTitle('Une erreur s\'est produite')
+            .setDescription('Une erreur s\'est produite lors de l\'exécution de la commande. Veuillez réessayer ultérieurement. Si le problème persiste, veuillez contacter Nεξυς#9063.')
+            .addField('Erreur :', e);
+
+        message.channel.send(errorembed);
+        console.error(e)
+    }
 }
 
 module.exports.help = {
