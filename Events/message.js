@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
-const config = require('../config')
-const prefix = config.prefix
+const prefix = 'cai!';
+
 module.exports = (client, message) => {
     if (message.author.bot || message.channel.type === 'dm') {
         return;
@@ -10,7 +10,7 @@ module.exports = (client, message) => {
         return;
     }
 
-    if (!message.content.startsWith(config.prefix)) {
+    if (!message.content.startsWith(prefix)) {
         return;
     }
     
