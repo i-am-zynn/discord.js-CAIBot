@@ -1,4 +1,4 @@
 {
-    "token": "BOT_TOKEN", // Remplacer "BOT_TOKEN" par le token de votre bot
-    "version": "2.6.4",
+    "token": "BOT_TOKEN",
+    "version": "2.6.7"
 }
