@@ -1,6 +1,6 @@
 @echo off
 
 title CAI-Bot - Discord
-nodemon index
+node index
 
 pause
