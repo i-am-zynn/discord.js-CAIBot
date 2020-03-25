@@ -1,4 +1,8 @@
 {
     "token": "BOT_TOKEN",
-    "version": "2.6.7"
+    "prefix": "!",
+    "ownerID": "change by your discord id",
+    "presence": "change by the status that the bot should display",
+    "presenceType": "WATCHING",
+    "version": "2.7.3"
 }
