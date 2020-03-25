@@ -65,8 +65,8 @@ module.exports.run = (client, message, args) => {
         .addField('Utilisateur expulsé :', kickMember.user.username)
         .addField('Tag de l\'utilisateur expulsé :', `#${kickMember.user.discriminator}`)
         .addField('ID de l\'utilisateur expulsé :', kickMember.id)
-        .addField('Banni par :', message.author.username)
-        .addField('Tag du modérateur :', message.author.discriminator)
+        .addField('Expulsé par :', message.author.username)
+        .addField('Tag du modérateur :', `${message.author.discriminator}`)
         .addField('Raison :', reason ? reason: '_Aucune raison spécifiée_')
         .setTimestamp(new Date());
 

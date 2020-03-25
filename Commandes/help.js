@@ -16,21 +16,25 @@ module.exports.run = (client, message, args) => {
         .addField('giphy', 'Rechercher et afficher un GIF')
         .addField('google', 'Faire une recherche sur Google')
         .addField('help', 'Voir les commandes disponibles')
-        .addField('nick', 'Changer de pseudo ou celui d\'un utilisateur')
+        .addField('nick', 'Changer son pseudo ou celui d\'un utilisateur')
         .addField('ping', 'Voir le ping du bot')
         .addField('report', 'Signaler un membre au staff du serveur')
         .addField('say', 'Envoyer un message via le bot')
         .addField('server-info', 'Avoir des informations sur le serveur')
         .addField('stats', 'Voir vos statistiques ou ceux d\'un utilisateur')
         .addField('t', 'Traduire du texte')
-        .addField('version', 'Voir la version du bot');
+        .addField('version', 'Voir la version du bot')
+        .setFooter(`Demandé par ${message.author.username}`, message.author.displayAvatarURL)
+        .setTimestamp(new Date());
 
     const aembed = new Discord.RichEmbed()
         .setColor('red')
         .setTitle('Vos commandes disponibles en tant que modérateur')
         .addField('clear', 'Supprimer un certain nombre de messages')
         .addField('poll', 'Faire un sondage')
-        .addField('tempmute', 'Réduire temporairement un membre au silence');
+        .addField('tempmute', 'Réduire temporairement un membre au silence')
+        .setFooter(`Demandé par ${message.author.username}`, message.author.displayAvatarURL)
+        .setTimestamp(new Date());
 
     const bembed = new Discord.RichEmbed()
         .setColor('0xff0000')
@@ -38,7 +42,9 @@ module.exports.run = (client, message, args) => {
         .addField('clear', 'Supprimer un certain nombre de messages')
         .addField('kick', 'Expulser un membre')
         .addField('poll', 'Faire un sondage')
-        .addField('tempmute', 'Réduire temporairement un membre au silence');
+        .addField('tempmute', 'Réduire temporairement un membre au silence')
+        .setFooter(`Demandé par ${message.author.username}`, message.author.displayAvatarURL)
+        .setTimestamp(new Date());
 
     const cembed = new Discord.RichEmbed()
         .setColor('0xff0000')
@@ -46,17 +52,25 @@ module.exports.run = (client, message, args) => {
         .addField('ban', 'Bannir un membre')
         .addField('clear', 'Supprimer un certain nombre de messages')
         .addField('poll', 'Faire un sondage')
-        .addField('tempmute', 'Réduire temporairement un membre au silence');
+        .addField('tempban', 'Bannir temporairement un utilisateur')
+        .addField('tempmute', 'Réduire temporairement un membre au silence')
+        .setFooter(`Demandé par ${message.author.username}`, message.author.displayAvatarURL)
+        .setTimestamp(new Date());
 
     const dembed = new Discord.RichEmbed()
         .setColor('0xff0000')
         .setTitle('Vos commandes disponibles en tant que modérateur')
-        .addField('kick', 'Expulser un membre');
+        .addField('kick', 'Expulser un membre')
+        .setFooter(`Demandé par ${message.author.username}`, message.author.displayAvatarURL)
+        .setTimestamp(new Date());
 
     const eembed = new Discord.RichEmbed()
         .setColor('0xff0000')
         .setTitle('Vos commandes disponibles en tant que modérateur')
-        .addField('ban', 'Bannir un membre');
+        .addField('ban', 'Bannir un membre')
+        .addField('tempban', 'Bannir temporairement un utilisateur')
+        .setFooter(`Demandé par ${message.author.username}`, message.author.displayAvatarURL)
+        .setTimestamp(new Date());
 
     const fembed = new Discord.RichEmbed()
         .setColor('0xff0000')
@@ -65,8 +79,37 @@ module.exports.run = (client, message, args) => {
         .addField('clear', 'Supprimer un certain nombre de messages')
         .addField('kick', 'Expulser un membre')
         .addField('poll', 'Faire un sondage')
-        .addField('tempmute', 'Réduire temporairement un membre au silence');
+        .addField('tempban', 'Bannir temporairement un utilisateur')
+        .addField('tempmute', 'Réduire temporairement un membre au silence')
+        .setFooter(`Demandé par ${message.author.username}`, message.author.displayAvatarURL)
+        .setTimestamp(new Date());
 
+    const gembed = new Discord.RichEmbed()
+        .setColor('0x7000AB')
+        .setTitle('Vos commandes disponibles en tant qu\'administrateur')
+        .addField('prune', 'Congédier les membres ne s\'étant pas connectés depuis 30 jours')
+        .setFooter(`Demandé par ${message.author.username}`)
+        .setTimestamp(new Date());
+
+    const hembed = new Discord.RichEmbed()
+        .setColor('0x7000AB')
+        .setTitle('Vos commandes disponibles en tant qu\'administrateur')
+        .addField('prune', 'Congédier les membres ne s\'étant pas connectés depuis 30 jours')
+        .addField('reload', 'Recharger le fichier d\'une commande')
+        .setFooter(`Demandé par ${message.author.username}`, message.author.displayAvatarURL)
+        .setTimestamp(new Date());
+
+    if (message.guild.member(message.author).hasPermission('ADMINISTRATOR') && message.author.id == '581748249166217232' || message.author.id == '360010766876672000') {
+        message.channel.send(embed);
+        message.channel.send(fembed);
+        return message.channel.send(hembed);
+    }
+
+    if (message.guild.member(message.author).hasPermission('ADMINISTRATOR') && message.author.id != '581748249166217232' && message.author.id != '360010766876672000') {
+        message.channel.send(embed);
+        message.channel.send(fembed);
+        return message.channel.send(gembed);
+    }
 
     if (message.guild.member(message.author).hasPermission('MANAGE_MESSAGES') && !message.guild.member(message.author).hasPermission('KICK_MEMBERS') && !message.guild.member(message.author).hasPermission('BAN_MEMBERS')) {
         message.channel.send(embed);

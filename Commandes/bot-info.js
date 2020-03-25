@@ -10,7 +10,7 @@ module.exports.run = (client, message, args) =>{
 
     const embed = new Discord.RichEmbed()
         .setColor('0x39afe4')
-        .setTitle('Mes information')
+        .setTitle('Mes informations')
         .setThumbnail(client.user.displayAvatarURL)
         .addField('Mon nom :', client.user.username)
         .addField('Mon tag :', '#' + client.user.discriminator)
@@ -22,9 +22,8 @@ module.exports.run = (client, message, args) =>{
         .addField('Version du système d\'exploitation :', os.release() , true)
         .addField('Architecture :', os.arch(), true)
         .addField('Mémoire allouée :', Math.round(process.memoryUsage().rss / 1024 / 1024) + " MB", true)
-        // .addField('Mémoire utilisée :', Math.round(process.memoryUsage().heapUsed / 1000 / 1000) + " MB", true)
         .addField('Mémoire utilisée :', memory + " MB", true)
-        .addField('Model du processeur :', os.cpus()[0].model, true)
+        .addField('Processeur :', os.cpus()[0].model, true)
         .addField('Utilisation du processeur :', Math.floor(cpuusage.user / cpuusage.system) + "%", true)
         .addField('Version Node JS :', process.version, true)
         .addField('Version Discord.js :', Discord.version, true);

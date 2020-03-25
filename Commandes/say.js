@@ -27,11 +27,11 @@ module.exports.run = (client, message, args) => {
             .setTitle('Une erreur s\'est produite')
             .setDescription('Une erreur s\'est produite lors de l\'exécution de la commande. Veuillez réessayer ultérieurement. Si le problème persiste, veuillez contacter Nεξυς#9063.')
             .addField('Erreur :', e)
-            .setFooter(`Tentative de ${message.author.username}`)
+            .setFooter(`Tentative de ${message.author.username}`, message.author.displayAvatarURL)
             .setTimestamp(new Date());
 
         message.channel.send(errorembed);
-        console.error(e)
+        console.error(e);
     }
 }
 

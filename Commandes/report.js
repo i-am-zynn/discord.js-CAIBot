@@ -20,7 +20,7 @@ module.exports.run = (client, message, args) => {
         .addField('Tag de l\'utilisateur signalé :', `#${reportedUser.user.discriminator}`)
         .addField('ID de la personne signalée :', reportedUser.id)
         .addField('Utilisateur ayant fait ce signalement :', message.author.username)
-        .addField('Tag de l\'utilisateur ayant fait ce signalement :', message.author.discriminator)
+        .addField('Tag de l\'utilisateur ayant fait ce signalement :', `#${message.author.discriminator}`)
         .addField('ID de la personne ayant fait ce signalement :', message.author.id)
         .addField('Canal du signalement :', message.channel)
         .addField('Raison :', reason ? reason: '_Aucune raison spécifiée_')
