@@ -3,7 +3,7 @@ const config = require('../config');
 
 module.exports.run = (client, message, args) => {
     if (message.author.id != config.ownerID) {
-        return message.channel.send('Seuls Nεξυς#9063 et Woomy4680_exe#6538 peut utiliser cette commande.');
+        return message.channel.send('Seul le créateur de ce bot peut utiliser cette commande.');
     }
     
     try {
