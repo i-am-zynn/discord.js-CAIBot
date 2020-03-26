@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const config = require('../config');
 
 module.exports.run = (client, message, args) => {
     const embed = new Discord.RichEmbed()
@@ -8,8 +9,8 @@ module.exports.run = (client, message, args) => {
         .setFooter(`Demandé par ${message.author.username}`, message.author.displayAvatarURL)
         .setTimestamp(new Date());
 
-    if (message.author.id != '581748249166217232' && message.author.id != '360010766876672000') {
-        return message.channel.send('Seuls Nεξυς#9063 et Woomy4680_exe#6538 peuvent utiliser cette commande.');
+    if (message.author.id != config.ownerID) {
+        return message.channel.send('Seul le créateur de ce bot peut utiliser cette commande.');
     }
 
     if (!args[0]) {
