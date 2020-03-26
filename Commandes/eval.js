@@ -1,8 +1,9 @@
 const Discord = require('discord.js');
+const config = require('../config');
 
 module.exports.run = (client, message, args) => {
-    if (message.author.id != '581748249166217232' && message.author.id != '360010766876672000') {
-        return message.channel.send('Seuls Nεξυς#9063 et Woomy4680_exe#6538 peuvent utiliser cette commande. Cette commande sera disponible pour tout le monde lorsqu\'elle sera bien fixée.');
+    if (message.author.id != config.ownerID) {
+        return message.channel.send('Seuls Nεξυς#9063 et Woomy4680_exe#6538 peut utiliser cette commande.');
     }
     
     try {
