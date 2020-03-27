@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const config = require('../config');
 
 module.exports.run = (client, message, args) => {
     const embed = new Discord.RichEmbed()
@@ -99,7 +100,7 @@ module.exports.run = (client, message, args) => {
         .setFooter(`Demandé par ${message.author.username}`, message.author.displayAvatarURL)
         .setTimestamp(new Date());
 
-    if (message.guild.member(message.author).hasPermission('ADMINISTRATOR') && message.author.id == '581748249166217232' || message.author.id == '360010766876672000') {
+    if (message.guild.member(message.author).hasPermission('ADMINISTRATOR') && message.author.id == config.ownerID) {
         message.channel.send(embed);
         message.channel.send(fembed);
         return message.channel.send(hembed);
