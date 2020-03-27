@@ -19,8 +19,13 @@ Pour héberger votre bot Discord, nous vous proposons un bon hébergeur gratuit.
 
 ---
 
-## Après avoir lu ce fichier, rien ne fonctionne :
+## Vous ne vous en sortez pas avec le code :
 Vous pouvez tout détailler [ici](https://github.com/NexusDeveloppement/discord.js-CAIBot/issues) ou rejoindre [notre serveur Discord](https://discord.gg/7CZBUJQ). Nous sommes à votre écoute et nous vous aiderons le plus vite possible.
+
+---
+
+## Modifier le code :
+Si vous avez de très bonne connaissances en JavaScript et que vous savez ce que vous faites, vous pouvez modifier le code à vos envies. Si vous ne savez pas programmer en JavaScript ou que vous n'avez aucune compétences en informatique, nous vous déconseillons de modifier le code.
 
 ---
 
