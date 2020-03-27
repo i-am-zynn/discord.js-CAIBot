@@ -106,7 +106,7 @@ module.exports.run = (client, message, args) => {
         return message.channel.send(hembed);
     }
 
-    if (message.guild.member(message.author).hasPermission('ADMINISTRATOR') && message.author.id != '581748249166217232' && message.author.id != '360010766876672000') {
+    if (message.guild.member(message.author).hasPermission('ADMINISTRATOR') && message.author.id != config.ownerID) {
         message.channel.send(embed);
         message.channel.send(fembed);
         return message.channel.send(gembed);
