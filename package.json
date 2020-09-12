@@ -16,7 +16,7 @@
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.27",
     "ms": "^2.1.2",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "os": "^0.1.1"
   }
 }
