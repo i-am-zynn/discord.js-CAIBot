@@ -13,7 +13,7 @@
     "discord.js": "^11.5.1",
     "fs": "^0.0.1-security",
     "mathjs": "^6.6.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "moment-timezone": "^0.5.27",
     "ms": "^2.1.2",
     "node-fetch": "^2.6.0",
